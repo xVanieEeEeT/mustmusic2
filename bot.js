@@ -32,9 +32,9 @@ client.on("message", async message => {
       if(!args) {
         return message.channel.send("**يرجــى تحديـد روم صوتــي مـع الآمـر ء .**");
       }
-        let room = message.guild.channels.find(a => a.name === args);
+        let room = message.guild.channels.find(a => a.name.includes(args));
           room.join() .then(() => {
-            message.channel.send(`**تـم تثبيــت البـوت فـي روم , \`${args}\`**`) .then((m) => {
+            message.channel.send(`**تـم تثبيــت البـوت فـي روم , \`${room.name}\`**`) .then((m) => {
               m.delete(5000);
             });
           });
@@ -44,7 +44,7 @@ client.on("message", async message => {
   }
 }
 });
-
+       
 
 client.on('message', message => {
 	var args = message.content.split(' ').slice(1);
